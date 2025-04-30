@@ -92,6 +92,7 @@ Issue 7: No NSG on Critical Interfaces
 - <b>Installed and enabled Apache2 HTTP server.</b>
 
 4. Testing Process and Validation
+
 - <b>Verified Apache via:
 -sudo systemctl status apache2
 -curl http://localhost</b>

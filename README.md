@@ -62,3 +62,47 @@ Issue 7: No NSG on Critical Interfaces
 - <b>Apache2 Web Server on Ubuntu</b>
 
 <h2>Program walk-through:</h2>
+
+1. Azure-Level Setup
+- <b>Deployed VMs and attached NICs to proper subnets (DMZ and Untrust).</b> 
+- <b>Created and attached Public IP (paloalto-untrust-pip) to ethernet1/1</b>
+- <b>Enabled IP forwarding on firewall NICs.</b>
+- <b>Created/Attached Network Security Groups (NSGs) with rules to allow:
+   Inbound HTTP (port 80),
+   Inbound HTTPS (port 443),
+   Inbound ICMP (for testing)
+
+2. Palo Alto Firewall Configuration
+
+- <b>Configured Layer 3 interfaces with zones (trust, dmz, untrust).</b>
+- <b>Assigned DHCP Client to interfaces to pull dynamic IPs.</b>
+- <b>Created Virtual Router with static default route (0.0.0.0/0) pointing to Azure’s next hop.</b>
+- <b>Set up Security Policies: Untrust → DMZ (web-browsing & ssl) — Allow, Untrust → Untrust (for health probes) — Allow</b>
+- <b>Configured NAT Policies: DNAT for inbound HTTP:
+   Source Zone: untrust,
+   Destination Address: 172.190.202.26 (Public IP),
+   Translated Address: 172.16.1.7 (Private interface of FW),
+   Translated Destination: 172.16.3.6 (Web server IP),
+
+   SNAT for outbound web access (dynamic-ip-and-port on ethernet1/1)</b>
+
+3. DMZ Web Server
+   
+- <b>Ubuntu Server VM in DMZ subnet.</b>
+- <b>Installed and enabled Apache2 HTTP server.</b>
+
+4. Testing Process and Validation
+- <b>Verified Apache via:
+-sudo systemctl status apache2
+-curl http://localhost</b>
+
+- <b>Verified that https://52.170.91.42 (Management IP) worked for Palo Alto GUI access.</b>
+
+- <b>Attempted to reach http://52.170.91.42 and later http://172.190.202.26 for web server</b>
+
+- <b>Performed CLI testing via:ping source 172.16.1.7 host 172.16.3.6,
+test security-policy-match ...,
+show session all</b>
+
+
+

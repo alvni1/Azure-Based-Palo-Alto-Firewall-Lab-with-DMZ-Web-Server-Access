@@ -72,6 +72,19 @@ Issue 7: No NSG on Critical Interfaces
    Inbound HTTPS (port 443),
    Inbound ICMP (for testing)
 
+![Screenshot 2025-04-28 002816](https://github.com/user-attachments/assets/af7b6553-cec9-4607-a878-0f75bb030662)
+
+![Screenshot 2025-04-29 210306](https://github.com/user-attachments/assets/4d90d99a-ddde-4692-a870-8b445e2a24f1)
+
+![Screenshot 2025-04-29 225202](https://github.com/user-attachments/assets/982ae603-5444-4006-a4d0-3e7069567237)
+
+![Screenshot 2025-04-29 230855](https://github.com/user-attachments/assets/8368d53a-a982-4c40-b785-7b722abc27f6)
+
+
+
+
+
+
 2. Palo Alto Firewall Configuration
 
 - <b>Configured Layer 3 interfaces with zones (trust, dmz, untrust).</b>
@@ -86,10 +99,30 @@ Issue 7: No NSG on Critical Interfaces
 
    SNAT for outbound web access (dynamic-ip-and-port on ethernet1/1)</b>
 
+![Screenshot 2025-04-28 023604](https://github.com/user-attachments/assets/da0c501b-fcf3-4036-ab1c-16d53b0795c8)
+
+![Screenshot 2025-04-29 205635](https://github.com/user-attachments/assets/89d720a5-3bd3-4c54-b90e-b200884d104d)
+
+![Screenshot 2025-04-29 205643](https://github.com/user-attachments/assets/0043d083-00f8-4c18-bf56-f8c45b0d629c)
+
+![Screenshot 2025-04-29 210500](https://github.com/user-attachments/assets/64dbe1d8-9a0a-4d9b-92b4-32d49cff5300)
+
+![Screenshot 2025-04-28 010012](https://github.com/user-attachments/assets/52996216-1e0b-47a6-b265-0c2233a7e795)
+
+
+
+
 3. DMZ Web Server
    
 - <b>Ubuntu Server VM in DMZ subnet.</b>
 - <b>Installed and enabled Apache2 HTTP server.</b>
+
+![Screenshot 2025-04-28 022220](https://github.com/user-attachments/assets/ec66b14d-56f5-4721-b267-c2b6557bc43c)
+
+
+
+
+
 
 4. Testing Process and Validation
 
@@ -99,11 +132,26 @@ Issue 7: No NSG on Critical Interfaces
 
 - <b>Verified that https://52.170.91.42 (Management IP) worked for Palo Alto GUI access.</b>
 
-- <b>Attempted to reach http://52.170.91.42 and later http://172.190.202.26 for web server</b>
+- <b>Attempted to reach http://52.170.91.42 and later http://172.190.202.26 from web server</b>
 
 - <b>Performed CLI testing via:ping source 172.16.1.7 host 172.16.3.6,
 test security-policy-match ...,
 show session all</b>
+
+
+![Screenshot 2025-04-29 223254](https://github.com/user-attachments/assets/82d45e1e-6cfa-44c0-b232-c96523944b50)
+
+
+![Screenshot 2025-04-29 215025](https://github.com/user-attachments/assets/9f8493f4-3989-4c21-b0bd-684ec9497d27)
+
+![Screenshot 2025-04-29 225607](https://github.com/user-attachments/assets/8527a323-3809-4436-85ca-b0633576aed1)
+
+![Screenshot 2025-04-29 230559](https://github.com/user-attachments/assets/334e5e98-3df6-4a0b-b21d-b5e07f1c7cbf)
+
+![Screenshot 2025-04-29 230646](https://github.com/user-attachments/assets/9da05534-e4da-48c9-ad91-9f9566752382)
+
+
+
 
 
 

@@ -51,10 +51,14 @@ Issue 7: No NSG on Critical Interfaces
 
 <h2>Languages and Utilities Used</h2>
 
-- <b>Cisco Command Line Interface</b> 
+- <b>CLI troubleshooting (ping, session viewer, interface/IP checks)</b> 
 
 <h2>Environments Used </h2>
 
-- <b>Cisco Packet Tracer</b>
+- <b>Palo Alto NGFW (PAN-OS Web UI + CLI)</b>
+
+- <b>Azure Virtual Network (vNET), NICs, and NSGs</b>
+
+- <b>Apache2 Web Server on Ubuntu</b>
 
 <h2>Program walk-through:</h2>
